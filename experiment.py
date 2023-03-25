@@ -6,7 +6,6 @@ load_dotenv()
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-
 def prompt(alice_value, bob_value, item = "coffee mug", ):
     prompt = f"""Imagine two people, Alice and Bob, negotiating over a {item} Alice currently owns.  
            
@@ -63,13 +62,10 @@ def get_details(dialog):
     )
     return response
 
-
-#response = get_response(prompt(alice_value = 25, bob_value = 20))
-
 for _ in range(3):
     response = get_response(prompt(alice_value = 20, bob_value = 40))
     dialog = response['choices'][0]['message']['content']
-#    print(dialog)
+    print(dialog)
     details = get_details(dialog)
     print(details['choices'][0]['message']['content'])
 
